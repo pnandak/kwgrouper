@@ -241,7 +241,7 @@ keywordsProcessed <- keywords %>%
     list=grepl("(?=.*^list | list | list$)",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 59. usa
-    usa=grepl("^usa | usa | usa$|(?=.*united)(?=.*states)",keyword,ignore.case=TRUE,perl=TRUE),
+    usa=grepl("^usa | usa | usa$|^us | us | us$|(?=.*united)(?=.*states)",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 60. nederland
     nederland=grepl("nederland",keyword,ignore.case=TRUE),
@@ -301,7 +301,7 @@ keywordsProcessed <- keywords %>%
     association=grepl("association",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 79. agent
-    agent=grepl("^agent | agent | agent$",keyword,ignore.case=TRUE,perl=TRUE),
+    agent=grepl("^agent | agent | agent$|^agents | agents | agents$",keyword,ignore.case=TRUE,perl=TRUE),
 
     ## 80. line
     line=grepl("(?=.*line)((?!kline|k-line|guideline|liner|infoline|lineup|linkline|stateline|ultraline|coxlines|discipline|foodline|euroline|hotline|loadline|mainline|mponline|online|crystalline|outline|riverline|ecu-line|uline).)*$",keyword,ignore.case=TRUE,perl=TRUE),
@@ -315,11 +315,215 @@ keywordsProcessed <- keywords %>%
     ## 83. flatbed
     flatbed=grepl("flatbed",keyword,ignore.case=TRUE,perl=TRUE),
     
+    ## 84. from to
+    fromto=grepl("(?=.*from)(?=.*to)",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 85. loading
+    loading=grepl("(?=.*loading)((?!tl|unloading).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 86. cost
+    cost=grepl("cost",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 87. download
+    download=grepl("download",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 88. solutions
+    solutions=grepl("solutions",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## 89. wiki
+    wiki=grepl("wiki",keyword,ignore.case=TRUE,perl=TRUE),    
+    
+    ## 90. wiki
+    worldwide=grepl("worldwide",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 91. post
+    post=grepl("(?=.*post)((?!postma|postnl|postfix|bpost|postal|posten|postcode|posting).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 92. postnl
+    postnl=grepl("postnl|post.nl",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 93. ups
+    ups=grepl("(?=.*ups)((?!pickups|groups).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 94. edinburgh
+    edinburgh=grepl("edinburgh|edinburg",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 95. Germany
+    germany=grepl("germany",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 96. Fleet
+    fleet=grepl("fleet",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 97. Owner
+    owner=grepl("owner",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 98. Africa
+    africa=grepl("(?=.*africa)((?!south).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 99. Bv
+    bv=grepl("bv | bv | bv$|bv. | bv. | bv.$|b.v. | b.v. | b.v.$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##100 Spedition
+    spedition=grepl("spedition",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##101 terms
+    terms=grepl("terms",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##102 terms
+    quote=grepl("quote",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##103 tilburg
+    tilburg=grepl("tilburg",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##104 dubai
+    dubai=grepl("dubai",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    #105 all
+    all=grepl("^all | all | all$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    #106 naar
+    all=grepl("^naar | naar | naar$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    #106 france
+    france=grepl("france",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    #107 page
+    page=grepl("(?=.*page)((?!groupage|groepage).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    #108 definition
+    definition=grepl("definition",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    #109 reefer
+    reefer=grepl("reefer",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    #110 number
+    number=grepl("number",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    #111 antwerpen
+    antwerpen=grepl("antwerpen",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    #112 express
+    express=grepl("express",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    #113 operator
+    operator=grepl("operator",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    #114 loaded
+    loaded=grepl("^loaded | loaded | loaded$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    #115 goods
+    goods=grepl("goods",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    #116 price
+    price=grepl("price",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    #117 dhl
+    dhl=grepl("^dhl | dhl | dhl$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##118 internationaal
+    internationaal=grepl("internationaal",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##119 belgie
+    belgie=grepl("belgie",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##120 douane
+    douane=grepl("douane",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##121 policy
+    policy=grepl("policy",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##122 20
+    twenty=grepl("^20 | 20 | 20$|20f",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##123 refrigerated
+    refrigerated=grepl("refrigerated",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##124 mol
+    mol=grepl("^mol | mol | mol$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##125 facebook
+    facebook=grepl("facebook",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##126 high
+    high=grepl("high",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##127 5
+    five=grepl("^5 | 5 | 5$|5f",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##128 40
+    forty=grepl("^40 | 40 | 40$|40f",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##129 10
+    ten=grepl("^10 | 10 | 10$|10f",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##130 national
+    national=grepl(" national|national",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##131 full
+    full=grepl("(?=.*^full | full | full$)((?!truck|load).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+   
+    ##132 homes
+    homes=grepl("^home| home | home$|homes",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##133 sap
+    sap=grepl("^sap| sap |sap$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##134 texas
+    texas=grepl("texas",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##134 education
+    education=grepl("education",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##135 open
+    open=grepl("^open | open | open$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##136 manager
+    manager=grepl("manager",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##137 singapore
+    singapore=grepl("singapore",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##138 london
+    london=grepl("london",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##139 florida
+    florida=grepl("florida",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##140 amsterdam
+    amsterdam=grepl("amsterdam",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##141 iso
+    iso=grepl("^iso | iso | iso$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##142 cube
+    cube=grepl("^cube | cube | cube$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##142 cube
+    cube=grepl("(?=.*^light | light | light$)((?!faster|than).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##143 light
+    light=grepl("(?=.*light)((?!faster).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##143 maersk
+    maersk=grepl("maersk",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##144 world
+    world=grepl("^world | world | world$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##145 insurance
+    insurance=grepl("insurance",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##146 planner
+    planner=grepl("planner",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ##147 homepage
+    homepage=grepl("homepage",keyword,ignore.case=TRUE,perl=TRUE),
+    
     ## einde
     
     ## irrelevant
-    
-    irrelevant=grepl("sale|(?=.*faster)(?=.*than)(?=.*light)|(?=.*ftl)(?=.*android|wiki|mods|cheat|ships|review|multi|player|advanced|edition|game|guide|ipad|stasis|pod|save|stuck|screen|error|loadout| editor|layout|cruiser|slug|mobile|strategy|creat|lock|zoltan|achiev|favorite|tier|type|secret|play|ware|shipping|download| ^tlc | tlc | tlc$)",keyword,ignore.case=TRUE, perl=TRUE)
+        
+    irrelevant=grepl("(?=.*ftl)(?=.*[advanced|edition|android|mod|cheat|review|multi|player|game|guide|ipad|stasis|pod|save|stuck|screen|error|loadout|editor|layout|cruiser|slug|mobile|strategy|creat|lock|zoltan|achiev|favorite|tier|type|secret|play|ware|shipping|download|ship|wiki])|(?=.*faster)(?=.*than)(?=.*light)|mp3|crack|no sound but wind|young scooter|sheeran|edith piaf|transport tycoon|18 wheels of steel|lyrics|truckload of trouble|playstation|xbox|game|play|^tlc | tlc | tlc$|acorn|ps4|gta5|sale|edison intel|transporter 3|html editors|eddie murphy|tattoo|edison|slug|wikileaks|zoo|vvd|edith|series|transporter 2|transporter 4|(?=.*editors)(?=.*[light|lyrics|love|end|start|wiki|download])",keyword,ignore.case=TRUE, perl=TRUE)
     
     )
 
