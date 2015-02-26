@@ -110,10 +110,10 @@ keywordsProcessed <- keywords %>%
     jobs=grepl("job",keyword,ignore.case=TRUE),
     
     ## 23. truckload
-    truckload=grepl("(?=.*truckload|truck load)((?!loader).)*$",keyword,ignore.case=TRUE, perl=TRUE),
+    truckload=grepl("(?=.*(truckload|truck load))((?!loader).)*$",keyword,ignore.case=TRUE, perl=TRUE),
     
     ## 24. forwarding
-    forwarding=grepl("(?=.*forward|forwarding)((?!forwarder).)*$",keyword,ignore.case=TRUE, perl=TRUE),
+    forwarding=grepl("(?=.*(forward|forwarding))((?!forwarder).)*$",keyword,ignore.case=TRUE, perl=TRUE),
     
     ## 25. forwarder
     forwarder=grepl("(?=.*forwarder)((?!forwarding).)*$",keyword,ignore.case=TRUE,perl=TRUE),
@@ -162,10 +162,10 @@ keywordsProcessed <- keywords %>%
     howto=grepl("how to|howto|(?=.*how)(?=.*do)((?!much|long).)*$",keyword,ignore.case=TRUE, perl=TRUE),
     
     ## 35. How much
-    howmuch=grepl("how much|(?=.*how)(?=.*much)",keyword,ignore.case=TRUE, perl=TRUE),
+    howmuch=grepl("how much|((?=.*how)(?=.*much))",keyword,ignore.case=TRUE, perl=TRUE),
     
     ## 36. How long
-    howlong=grepl("how long|(?=.*how)(?=.*long)",keyword,ignore.case=TRUE, perl=TRUE),
+    howlong=grepl("how long|((?=.*how)(?=.*long))",keyword,ignore.case=TRUE, perl=TRUE),
     
     ## 37. Free
     free=grepl("(?=.*free)((?!android|wiki|
@@ -178,7 +178,7 @@ keywordsProcessed <- keywords %>%
     management=grepl("management",keyword,ignore.case=TRUE, perl=TRUE),
     
     ## 39. Top
-    top=grepl("(?=.*top | top)((?!rtop|ktop|stop|etop|topic).)*$",keyword,ignore.case=TRUE, perl=TRUE),  
+    top=grepl("(?=.*(top | top))((?!rtop|ktop|stop|etop|topic).)*$",keyword,ignore.case=TRUE, perl=TRUE),  
     
     ## 40. Carrier
     carrier=grepl("(?=.*carrier)((?!carriere).)*$",keyword,ignore.case=TRUE, perl=TRUE), 
@@ -187,13 +187,13 @@ keywordsProcessed <- keywords %>%
     edi=grepl("edi$|edi |(?=.*elec)(?=.*data)(?=.*inter)",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 41. India
-    india=grepl("(?=.*india| india|india )((?!indiana|indialinx).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+    india=grepl("(?=.*(india| india|india ))((?!indiana|indialinx).)*$",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 42. air
-    air=grepl("(?=.*air| air|air )((?!repair|prairie|cairns|hair|horaires|commissionair|nairaland|nairobi).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+    air=grepl("(?=.*(air| air|air ))((?!repair|prairie|cairns|hair|horaires|commissionair|nairaland|nairobi).)*$",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 43. sea
-    sea=grepl("(?=.*sea| sea|sea )((?!season|search|seattle|reseau|sears|sealing|disease|search|lease|seals|searcy|seat|chelsea).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+    sea=grepl("(?=.*(sea| sea|sea ))((?!season|search|seattle|reseau|sears|sealing|disease|search|lease|seals|searcy|seat|chelsea).)*$",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 44. Europe
     europe=grepl("(?=.*europe)((?!european|europese).)*$",keyword,ignore.case=TRUE,perl=TRUE),
@@ -229,10 +229,10 @@ keywordsProcessed <- keywords %>%
     rotterdam=grepl("rotterdam",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 55. feet
-    feet=grepl("(?=.*ft | ft|feet)((?!ftl).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+    feet=grepl("(?=.*(ft | ft|feet))((?!ftl).)*$",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 56. rates
-    rates=grepl("(?=.*rates| rate|rate )((?!refrigerated|strategy|integrated|rated|emirates|corporate|operate|strategic|accelerates|crate|celebrate|directorate).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+    rates=grepl("(?=.*(rates| rate|rate ))((?!refrigerated|strategy|integrated|rated|emirates|corporate|operate|strategic|accelerates|crate|celebrate|directorate).)*$",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 57. inc
     inc=grepl("(?=.*inc |inc. | inc | inc. | inc$| inc.$)",keyword,ignore.case=TRUE,perl=TRUE),
@@ -523,18 +523,43 @@ keywordsProcessed <- keywords %>%
     
     ## irrelevant
         
-    irrelevant=grepl("(?=.*ftl)(?=.*[advanced|edition|android|mod|cheat|review|multi|player|game|guide|ipad|stasis|pod|save|stuck|screen|error|loadout|editor|layout|cruiser|slug|mobile|strategy|creat|lock|zoltan|achiev|favorite|tier|type|secret|play|ware|shipping|download|ship|wiki])|(?=.*faster)(?=.*than)(?=.*light)|mp3|crack|no sound but wind|young scooter|sheeran|edith piaf|transport tycoon|18 wheels of steel|lyrics|truckload of trouble|playstation|xbox|game|play|^tlc | tlc | tlc$|acorn|ps4|gta5|sale|edison intel|transporter 3|html editors|eddie murphy|tattoo|edison|slug|wikileaks|zoo|vvd|edith|series|transporter 2|transporter 4|(?=.*editors)(?=.*[light|lyrics|love|end|start|wiki|download])",keyword,ignore.case=TRUE, perl=TRUE)
+    irrelevant=grepl("(?=.*faster)(?=.*than)(?=.*light)|(?=.*editors)(?=.*(light|lyrics|love|end|tour|dates|start|wiki|download))|mp3|crack|no sound but wind|young scooter|sheeran|edith piaf|transport tycoon|18 wheels of steel|lyrics|truckload of trouble|playstation|xbox|game|play|^tlc | tlc | tlc$|acorn|ps4|gta5|sale|edison intel|transporter 3|html editors|eddie murphy|tattoo|edison|slug|wikileaks|zoo|vvd|edith|series|transporter 2|transporter 4|(?=.*ftl)(?=.*(advanced|edition|android|mod|cheat|review|multi|player|game|guide|ipad|stasis|pod|save|stuck|screen|error|loadout|editor|layout|cruiser|slug|mobile|strategy|creat|lock|zoltan|achiev|favorite|tier|type|secret|play|ware|shipping|download|ship|wiki))",keyword,ignore.case=TRUE, perl=TRUE)
     
     )
 
+## (?=.*faster)(?=.*than)(?=.*light) --> 101
 
+## (?=.*ftl)(?=.*(advanced|edition|android|mod|cheat|review|multi|player|game|guide|ipad|stasis|pod|save|stuck|screen|error|loadout|editor|layout|cruiser|slug|mobile|strategy|creat|lock|zoltan|achiev|favorite|tier|type|secret|play|ware|shipping|download|ship|wiki)) --> 908
 
-## syntax voor bevat wel + bevat niet
-"(?=.*transport)((?!compan).)*$"
+## (?=.*ftl)(?=.*advanced|edition|android|mod|cheat|review|multi|player|game|guide|ipad|stasis|pod|save|stuck|screen|error|loadout|editor|layout|cruiser|slug|mobile|strategy|creat|lock|zoltan|achiev|favorite|tier|type|secret|play|ware|shipping|download|ship|wiki) --> 140
+
+## (?=.*editors)(?=.*light|lyrics|love|end|start|wiki|download) --> 13
+## (?=.*editors)(?=.*(light|lyrics|love|end|start|wiki|download)) --> 93
+
+## mp3|crack|no sound but wind|young scooter|sheeran|edith piaf|transport tycoon|18 wheels of steel|lyrics|truckload of trouble|playstation|xbox|game|play|^tlc | tlc | tlc$|acorn|ps4|gta5|sale|edison intel|transporter 3|html editors|eddie murphy|tattoo|edison|slug|wikileaks|zoo|vvd|edith|series|transporter 2|transporter 4 --> 2517
+
 
 
 
 
 ## reshape
 
-kwmelt <- melt(keywordsProcessed,id.vars=c("keyword"),measure.vars=names(keywordsProcessed[,2:ncol(keywordsProcessed)]),variable.name="keyword",value.name="tags")
+## irrelevante wooren eruit halen
+keywordsProcessed2 <- filter(keywordsProcessed, irrelevant==FALSE)
+
+kwmelt <- melt(keywordsProcessed,id.vars=c("keyword"),measure.vars=names(keywordsProcessed[,2:ncol(keywordsProcessed)]),variable.name="tag",value.name="yesno")
+
+cleanmelt <- filter(kwmelt, yesno==TRUE)
+
+cleanmelt <- select(cleanmelt, keyword, tag)
+
+
+## long naar wide
+data.wide <- dcast(cleanmelt, keyword ~ tag, value.var="tag")
+
+
+## export unique words
+write.csv(unique(cleanmelt$keyword), "taggedwordsunique.csv", row.names=FALSE, col.names=FALSE)
+
+
+
