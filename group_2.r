@@ -86,13 +86,13 @@ keywordsProcessed <- keywords %>%
     koeltransport=grepl("(?=.*koel)(?=.*transport)",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 20. Sailing
-    sailing=grepl("sail",keyword,ignore.case=TRUE,perl=TRUE),
+    sail=grepl("sail",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 21. Sailing
     sailing=grepl("sailing",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 22. naar
-    sailing=grepl("^naar | naar | naar$",keyword,ignore.case=TRUE,perl=TRUE),
+    naar=grepl("^naar | naar | naar$|^to | to | to$",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 23. vervoer
     vervoer=grepl("vervoer",keyword,ignore.case=TRUE,perl=TRUE),
@@ -190,6 +190,75 @@ keywordsProcessed <- keywords %>%
     ## 53. Adres
     adres=grepl("adres",keyword,ignore.case=TRUE,perl=TRUE),
     
+    ## 54. Cube
+    cube=grepl("cube",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 55. Forwarding
+    forwarding=grepl("forwarding",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 56. High
+    high=grepl("high",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 57. Management
+    management=grepl("management",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 58. Online
+    online=grepl("online",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 59. Schedule
+    online=grepl("schedule",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 60. Tracing
+    tracing=grepl("tracing",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 61. Vracht
+    vracht=grepl("^vracht | vracht | vracht$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 62. Vrachtwagen
+    vrachtwagen=grepl("vrachtwagen",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 63. Weg
+    weg=grepl(" weg|^weg",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 64. zwaar
+    zwaar=grepl("zwaar",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 65. dieplader
+    dieplader=grepl("dieplader",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 66. Fleet
+    fleet=grepl("^fleet | fleet | fleet$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 67. Goederen
+    goederen=grepl("goederen",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 68. HC
+    HC=grepl("^hc | hc | hc$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 68. Intermodaal
+    intermodaal=grepl("intermodaal",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 69. opslag
+    opslag=grepl("opslag",keyword,ignore.case=TRUE,perl=TRUE),
+      
+    ## 70. Pallet
+    pallet=grepl("pallet",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 71. Scheepvaart
+    scheepvaart=grepl("scheepvaart",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 72. Specialist
+    specialist=grepl("specialist",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 73. Tanktransport
+    tanktransport=grepl("tanktransport",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 74. world
+    world=grepl("^world | world | world$",keyword,ignore.case=TRUE,perl=TRUE),
+    
+    ## 75. zeecontainer
+    zeecontainer=grepl("zeecontainer",keyword,ignore.case=TRUE,perl=TRUE),
+    
 ## Groeperen van landen    
     
     ## Nederland
@@ -212,6 +281,18 @@ keywordsProcessed <- keywords %>%
 
     ## Engeland
     Engeland=grepl("Engeland|England",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Denemarken
+    Denemarken=grepl("Denemarken|Denmark",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Scandinavie
+    Scandinavie=grepl("Scandinavi",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Zweden
+    Zweden=grepl("Zweden|Sweden",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Zwitserland
+    Zwitserland=grepl("Zwitser|Swiss|Switser",keyword,ignore.case=TRUE,perl=TRUE),
 
 ## Groeperen van buitenlandse steden
 
@@ -463,6 +544,122 @@ keywordsProcessed <- keywords %>%
     ## Yusen Logistics
     YusenLogistics=grepl("yusen",keyword,ignore.case=TRUE,perl=TRUE),
 
+    ## Jo van Beek
+    JoVanBeek=grepl("(?=.*beek)(?=.*jo)",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Van Beek Sneltransport
+    VanBeekSneltransport=grepl("(?=.*beek)(?=.*snel)(?=.*transport)",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## AC van Beek
+    ACVanBeek=grepl("(?=.*(^AC | AC | AC$))(?=.*beek)|(?=.*(^beek | beek | beek$))(?=.*transport)((?!(snel|jo|uden)).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Van Bentum Transport
+    VanBentumTransport=grepl("(?=.*bentum)(?!barneveld).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## J van Bentum Transport
+    JVanBentumTransport=grepl("(?=.*bentum)(?=.*barneveld)",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Bos Logistics
+    BosLogistics=grepl("(?=.*(^bos | bos | bos$))(?=.*schiphol)",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## EuserTransport
+    EuserTransport=grepl("^euser | euser | euser$",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Greving Transport
+    GrevingTransport=grepl("greving",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Breewel Transport
+    GrevingTransport=grepl("breewel",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Hereijgers Transport
+    HereijgersTransport=grepl("hereijgers",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Mitsui
+    Mitsui=grepl("mitsui",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## De Rijke Transport
+    DeRijkeTransport=grepl("rijke",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Van der Wal Transport
+    VanDerWal=grepl("^wal | wal | wal$",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Van der Werff Transport
+    VanDerWerff=grepl(" werff|^werff",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Wezenberg Transport
+    WezenbergTransport=grepl("wezenberg",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Alblas Transport
+    AlblasTransport=grepl("alblas",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Boers Transport
+    BoersTransport=grepl("^boers | boers | boers$",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Brouwer Transport
+    BrouwerTransport=grepl("^boers | boers | boers$",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## CSAV
+    CSAV=grepl("csav",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Derix Transport
+    DerixTransport=grepl("derix",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Van Dijk Transport
+    VanDijkTransport=grepl("(?=.*van)(?=.*dijk)",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Essers Transport
+    EssersTransport=grepl("essers",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## VanDerGaag Transport
+    VanDerGaagTransport=grepl("gaag",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Getru Transport
+    GetruKoeltransport=grepl("getru",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Groenenboom Transport
+    GroenenboomKoeltransport=grepl("groenenboom",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## GVT
+    GVT=grepl("gvt",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Van de Kamp
+    VanDeKampTransport=grepl("^kamp | kamp | kamp$",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Opzeeland Transport
+    OpzeelandTransport=grepl("opzeeland",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Van Reenen Transport
+    VanReenenTransport=grepl("Reenen",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Schouten Transport
+    SchoutenTransport=grepl("schouten",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Speksnijder Transport
+    SpeksnijderTransport=grepl("speksnijder",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Van Spreuwel Transport
+    VanSpreuwelTransport=grepl("spreuwel",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Stam Transport
+    StamTransport=grepl("stam",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Steinweg Transport
+    SteinwegTransport=grepl("steinweg",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Veldhuizen Transport
+    VeldhuizenTransport=grepl("veldhuizen",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Vermeer Transport
+    VermeerTransport=grepl("^vermeer | vermeer | vermeer$",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Van Zandbergen Transport
+    VanZandbergenTransport=grepl("zandbergen",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Zielman Transport
+    ZielmanTransport=grepl("zandbergen",keyword,ignore.case=TRUE,perl=TRUE),
+
+    ## Zijderhand Transport
+    ZijderhandTransport=grepl("zijderhand",keyword,ignore.case=TRUE,perl=TRUE),
 
 ## Groeperen van provincies
     
@@ -472,7 +669,7 @@ keywordsProcessed <- keywords %>%
     
     ## irrelevant
         
-    irrelevant=grepl("^opleiding | opleiding | opleiding$|(?=.*deuveren)(?=.*(dedemsvaart|ijsselmuiden|nunspeet|hout|kampen))|houthandel|makelaar|(?=.*(brandsma|brink|bennink))(?=.*roden)|verhui|failli|vacature|huys",keyword,ignore.case=TRUE, perl=TRUE)
+    irrelevant=grepl("^opleiding | opleiding | opleiding$|(?=.*deuveren)(?=.*(dedemsvaart|ijsselmuiden|nunspeet|hout|kampen))|houthandel|makelaar|(?=.*(brandsma|brink|bennink))(?=.*roden)|verhui|failli|vacature|huys|college|cursus|mbo",keyword,ignore.case=TRUE, perl=TRUE)
     
     )
 
