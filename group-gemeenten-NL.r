@@ -73,7 +73,7 @@ keywordsProcessed <- keywords %>%
                 Tilburg=grepl("Tilburg",keyword,ignore.case=TRUE,perl=TRUE),
                 
                 ## Laarbeek
-                Laarbeek=grepl("Laarbeek",keyword,ignore.case=TRUE,perl=TRUE),
+                Laarbeek=grepl("Laarbeek|(?=.*beek)(?=.donk)",keyword,ignore.case=TRUE,perl=TRUE),
                 
                 ## Berkelland
                 Berkelland=grepl("Berkelland",keyword,ignore.case=TRUE,perl=TRUE),
@@ -210,8 +210,8 @@ keywordsProcessed <- keywords %>%
                 ## Opmeer
                 Opmeer=grepl("Opmeer",keyword,ignore.case=TRUE,perl=TRUE),
                 
-                ## SúdwestFryslân
-                ## SudwestFryslan=grepl("(?=.*(Súdwest|Sudwest|Zuidwest))(?=.*(Fryslân|Fryslan|Friesland))",keyword,ignore.case=TRUE,perl=TRUE),
+                ## S?dwestFrysl?n
+                ## SudwestFryslan=grepl("(?=.*(S?dwest|Sudwest|Zuidwest))(?=.*(Frysl?n|Fryslan|Friesland))",keyword,ignore.case=TRUE,perl=TRUE),
                 
                 ## Medemblik
                 Medemblik=grepl("Medemblik",keyword,ignore.case=TRUE,perl=TRUE),
@@ -289,7 +289,7 @@ keywordsProcessed <- keywords %>%
                 GoereeOverflakkee=grepl("goeree|overflakkee|flakkee",keyword,ignore.case=TRUE,perl=TRUE),
                 
                 ## Zundert
-                Zundert=grepl("Zundert",keyword,ignore.case=TRUE,perl=TRUE),
+                Zundert=grepl("Zundert|hazeldonk",keyword,ignore.case=TRUE,perl=TRUE),
                 
                 ## Nieuwkoop
                 Nieuwkoop=grepl("Nieuwkoop",keyword,ignore.case=TRUE,perl=TRUE),
@@ -469,7 +469,7 @@ keywordsProcessed <- keywords %>%
                 Terneuzen=grepl("Terneuzen",keyword,ignore.case=TRUE,perl=TRUE),
                 
                 ## Montferland
-                Montferland=grepl("Montferland",keyword,ignore.case=TRUE,perl=TRUE),
+                Montferland=grepl("Montferland|heerenberg",keyword,ignore.case=TRUE,perl=TRUE),
                 
                 ## Terschelling
                 Terschelling=grepl("Terschelling",keyword,ignore.case=TRUE,perl=TRUE),
@@ -478,7 +478,7 @@ keywordsProcessed <- keywords %>%
                 Simpelveld=grepl("Simpelveld",keyword,ignore.case=TRUE,perl=TRUE),
                 
                 ## Westland
-                Westland=grepl("Westland",keyword,ignore.case=TRUE,perl=TRUE),
+                Westland=grepl("Westland|maasdijk|de lier|poeldijk",keyword,ignore.case=TRUE,perl=TRUE),
                 
                 ## BaarleNassau
                 BaarleNassau=grepl("Baarle|Nassau",keyword,ignore.case=TRUE,perl=TRUE),
@@ -622,7 +622,7 @@ keywordsProcessed <- keywords %>%
                 Vught=grepl("Vught",keyword,ignore.case=TRUE,perl=TRUE),
                 
                 ## Lansingerland
-                Lansingerland=grepl("Lansingerland",keyword,ignore.case=TRUE,perl=TRUE),
+                Lansingerland=grepl("Lansingerland|Bleiswijk",keyword,ignore.case=TRUE,perl=TRUE),
                 
                 ## Bernheze
                 Bernheze=grepl("Bernheze",keyword,ignore.case=TRUE,perl=TRUE),
@@ -676,7 +676,7 @@ keywordsProcessed <- keywords %>%
                 Drimmelen=grepl("Drimmelen",keyword,ignore.case=TRUE,perl=TRUE),
                 
                 ## Kampen
-                Kampen=grepl("Kampen",keyword,ignore.case=TRUE,perl=TRUE),
+                Kampen=grepl("Kampen|ijsselmuiden",keyword,ignore.case=TRUE,perl=TRUE),
                 
                 ## Mook en Middelaar
                 MookEnMiddelaar=grepl("^Mook | Mook | Mook$|Middelaar",keyword,ignore.case=TRUE,perl=TRUE),
@@ -718,7 +718,7 @@ keywordsProcessed <- keywords %>%
                 Cromstrijen=grepl("Cromstrijen",keyword,ignore.case=TRUE,perl=TRUE),
                 
                 ## Smallingerland
-                Smallingerland=grepl("Smallingerland",keyword,ignore.case=TRUE,perl=TRUE),
+                Smallingerland=grepl("Smallingerland|drachten",keyword,ignore.case=TRUE,perl=TRUE),
                 
                 ## Veendam
                 Veendam=grepl("Veendam",keyword,ignore.case=TRUE,perl=TRUE),

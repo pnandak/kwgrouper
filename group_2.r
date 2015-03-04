@@ -1,3 +1,5 @@
+
+
 ## dependencies
 
 library(dplyr)
@@ -7,7 +9,10 @@ library(reshape2)
 
 ## keywords laden
 
-keywords <- read.csv("bfgl-kwpo.csv", sep=";") %>% select(keyword)
+keywords <- read.csv("bfgl-kwpo.csv", sep=";") %>%
+  filter(relevant!="nee") %>%
+  select(keyword,volume)
+
 
 
 ## frequentietabel maken
@@ -17,12 +22,12 @@ uniekeWoorden <- strsplit(woorden, " ")[[1]]
 woordFreq <- as.data.frame(table(uniekeWoorden)) %>%
   arrange(desc(Freq))
 
-rm(uniekeWoorden, woorden)
-
 write.csv(woordFreq, "woordFreq.csv")
 
+rm(uniekeWoorden, woorden, woordFreq)
 
-## processed
+
+## Keywords processem
 
 keywordsProcessed <- keywords %>%
   
@@ -35,13 +40,13 @@ keywordsProcessed <- keywords %>%
     container=grepl("container",keyword,ignore.case=TRUE),
     
     ## 3. logistic
-    logistics=grepl("logistic",keyword,ignore.case=TRUE),
+    logistic=grepl("logistic",keyword,ignore.case=TRUE),
     
     ## 4. tracking
     track=grepl("(?=.*track)((?!trace).)*$",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 5. track and trace
-    TrackAndTrace=grepl("(?=.*track)(?=.*trace)",keyword,ignore.case=TRUE, perl=TRUE),
+    trackAndTrace=grepl("(?=.*track)(?=.*trace)",keyword,ignore.case=TRUE, perl=TRUE),
     
     ## 6. terminal
     terminal=grepl("terminal",keyword,ignore.case=TRUE,perl=TRUE),
@@ -62,7 +67,7 @@ keywordsProcessed <- keywords %>%
     ship=grepl("^ship | ship | ship$",keyword,ignore.case=TRUE, perl=TRUE),
     
     ## 12. logistiek
-    ship=grepl("logistiek",keyword,ignore.case=TRUE, perl=TRUE),
+    logistiek=grepl("logistiek",keyword,ignore.case=TRUE, perl=TRUE),
     
     ## 13. schiphol
     schiphol=grepl("schiphol",keyword,ignore.case=TRUE, perl=TRUE),
@@ -80,13 +85,13 @@ keywordsProcessed <- keywords %>%
     schedule=grepl("schedule",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 18. haven
-    schedule=grepl("(?=.*haven)((?!lucht).)*$",keyword,ignore.case=TRUE,perl=TRUE),
+    haven=grepl("(?=.*haven)((?!lucht).)*$",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 19. koeltransport
     koeltransport=grepl("(?=.*koel)(?=.*transport)",keyword,ignore.case=TRUE,perl=TRUE),
     
-    ## 20. Sailing
-    sail=grepl("sail",keyword,ignore.case=TRUE,perl=TRUE),
+    ## 20. Sail
+    sail=grepl("^sail | sail | sail$",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 21. Sailing
     sailing=grepl("sailing",keyword,ignore.case=TRUE,perl=TRUE),
@@ -203,10 +208,10 @@ keywordsProcessed <- keywords %>%
     management=grepl("management",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 58. Online
-    online=grepl("online",keyword,ignore.case=TRUE,perl=TRUE),
+    ## online=grepl("online",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 59. Schedule
-    online=grepl("schedule",keyword,ignore.case=TRUE,perl=TRUE),
+    schedule=grepl("schedule",keyword,ignore.case=TRUE,perl=TRUE),
     
     ## 60. Tracing
     tracing=grepl("tracing",keyword,ignore.case=TRUE,perl=TRUE),
@@ -691,7 +696,7 @@ gelderland=grepl("(?=.*gelder)(?=.*land)",keyword,ignore.case=TRUE,perl=TRUE),
 limburg=grepl("limburg",keyword,ignore.case=TRUE,perl=TRUE),
 
 ## 10. Zeeland
-zeeland=grepl("(?=.*zee)(?=.*land)",keyword,ignore.case=TRUE,perl=TRUE),
+zeeland=grepl("^zeeland | zeeland | zeeland$",keyword,ignore.case=TRUE,perl=TRUE),
 
 ## 11. Groningen
 groningen=grepl("groningen",keyword,ignore.case=TRUE,perl=TRUE),
@@ -774,7 +779,7 @@ Epe=grepl("^Epe | Epe | Epe$",keyword,ignore.case=TRUE,perl=TRUE),
 Eemsmond=grepl("Eemsmond",keyword,ignore.case=TRUE,perl=TRUE),
 
 ## Bergen
-Bergen=grepl("Bergen",keyword,ignore.case=TRUE,perl=TRUE),
+Bergen=grepl("(?=.*(^Bergen | bergen | bergen$))((?!zoom).)*$",keyword,ignore.case=TRUE,perl=TRUE),
 
 ## Dinkelland
 Dinkelland=grepl("Dinkelland|(?=.*dinkel)(?=.*land)",keyword,ignore.case=TRUE,perl=TRUE),
@@ -1236,7 +1241,7 @@ Uden=grepl("^Uden | Uden | Uden$",keyword,ignore.case=TRUE,perl=TRUE),
 Bedum=grepl("^Bedum | Bedum | Bedum$",keyword,ignore.case=TRUE,perl=TRUE),
 
 ## Beek
-Beek=grepl("^Beek | Beek | Beek$",keyword,ignore.case=TRUE,perl=TRUE),
+Beek=grepl("(?=.*(^Beek | Beek | Beek$))((?!(^van | van | van$)).)*$",keyword,ignore.case=TRUE,perl=TRUE),
 
 ## Groesbeek
 Groesbeek=grepl("Groesbeek",keyword,ignore.case=TRUE,perl=TRUE),
@@ -1874,20 +1879,39 @@ Zoetermeer=grepl("Zoetermeer",keyword,ignore.case=TRUE,perl=TRUE),
 
 )
 
+
 ## Data reshapen
 
-## irrelevante wooren eruit halen
-keywordsProcessed <- filter(keywordsProcessed, irrelevant==FALSE)
+keywordsLong <- keywordsProcessed %>%
+  filter(irrelevant==FALSE) %>%
+  melt(id.vars=c("keyword","volume"),
+  measure.vars=names(keywordsProcessed[,3:ncol(keywordsProcessed)]),
+  variable.name="tag",value.name="yesno") %>%
+  filter(yesno==TRUE) %>%
+  select(keyword,volume,tag)
 
-## van wide naar long
+write.csv(keywordsLong,"tableau.csv")
 
-keywordsLong <- melt(keywordsProcessed,id.vars=c("keyword"),measure.vars=names(keywordsProcessed[,2:ncol(keywordsProcessed)]),variable.name="tag",value.name="yesno")
+## frequentietabel maken
 
-keywordsClean <- filter(keywordsLong, yesno==TRUE)
+as.data.frame(table(keywordsLong$tag)) %>%
+  arrange(desc(Freq)) %>%
+  write.csv("tagFreq.csv")
 
-keywordsClean <- select(keywordsClean, keyword, tag)
+## Dimensies
 
+## dimensies zijn voor deze klus handmatig gedaan in Excel.
 
+tagsdims <- read.csv("tags-dims.csv", sep=";")
 
+wordtagsdims <- merge(keywordsLong,tagsdims,by.x="tag", by.y="Tag")
 
+## Types
 
+## types zijn voor deze klus handmatig gedaan in Excel
+
+dimstypes <- read.csv("dims-types.csv", sep=";")
+
+wordtagsdimstypes <- merge(wordtagsdims,dimstypes,by.x="Dimensie", by.y="Dimensie")
+
+## productwoorden ontdoen van verkeerde tags
